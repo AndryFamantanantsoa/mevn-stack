@@ -7,6 +7,9 @@ You can directly use them in pages and other components without the need to impo
 **Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
 
 - `<AlertsAlert>` | `<alerts-alert>` (components/alerts/alert.vue)
+- `<BooksViewer>` | `<books-viewer>` (components/books/BooksViewer.vue)
+- `<BooksListsViewer>` | `<books-lists-viewer>` (components/books/ListsViewer.vue)
 - `<Footer>` | `<footer>` (components/footer/Footer.vue)
 - `<LoginAuthForm>` | `<login-auth-form>` (components/login/AuthForm.vue)
 - `<NavNavbar>` | `<nav-navbar>` (components/nav/Navbar.vue)
+- `<TableList>` | `<table-list>` (components/table/Table-list.vue)

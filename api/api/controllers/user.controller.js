@@ -7,7 +7,7 @@ exports.findOne = (req, res) => {
   User.findById(id)
     .then(data => {
       if (!data){
-        res.status(200).send({ message: "Not found user with id " + id, status: 404 });
+        return res.status(200).send({ message: "Not found user with id " + id, status: 404 });
       }
       else{
         res.status(200).send(data);
@@ -16,6 +16,6 @@ exports.findOne = (req, res) => {
     .catch(error => {
       return res
         .status(200)
-        .send({ message: "Error retrieving User with id=" + id, status: 500 });
+        .send({ message: error+" | Error retrieving User with id=" + id, status: 500 });
     });
 };

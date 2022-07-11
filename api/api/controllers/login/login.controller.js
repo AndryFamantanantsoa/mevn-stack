@@ -5,11 +5,11 @@ const User = db.user;
 exports.signup = async (req, res) => {
   // Validate request
   if (!req.body.email || !req.body.password) {
-    res.status(200).send({ message: "Content can not be empty!", status: 400 });
+    return res.status(200).send({ message: "Content can not be empty!", status: 400 });
   }
   const userExist = await User.findOne({ email: req.body.email });
   if (userExist) {
-    res.status(200).json({ error: "user already existing.", status: 401 });
+    return res.status(200).json({ message: "user already existing.", status: 401 });
   }
 
   const user = new User(req.body);
@@ -34,9 +34,9 @@ exports.signin = async (req, res) => {
     if (checkValid) {
       res.status(200).send((user));
     } else {
-      res.status(200).json({ error: "Invalid Password", status: 400 });
+      return res.status(200).json({ message: "Invalid Password", status: 400 });
     }
   } else {
-    res.status(200).json({ error: "User not exist", status: 401 });
+    return res.status(200).json({ message: "User not exist", status: 401 });
   }
 }

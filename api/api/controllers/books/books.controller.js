@@ -3,8 +3,7 @@ const Book = db.book;
 
 exports.new = (req, res) => {
   if (!req.body.title) {
-    res.status(400).send({ message: "Title can not be empty!" });
-    return;
+    return res.status(200).send({ message: "Title can not be empty!", status: 400 });
   }
   const book = new Book({
     title: req.body.title,
@@ -20,9 +19,10 @@ exports.new = (req, res) => {
         res.status(200).send(data);
     })
     .catch(err => {
-      return res.status(500).send({
+      return res.status(200).send({
         message:
           err.message || "Some error occurred while creating the Book."
+        , status: 500
       });
     });
 };
@@ -49,9 +49,10 @@ exports.findAll = (req, res) => {
         res.status(200).send(data);
       })
       .catch(err => {
-        return res.status(500).send({
+        return res.status(200).send({
             message:
             err.message || "Some error occurred while retrieving books."
+            , status: 500
         });
       });
 };
@@ -61,7 +62,7 @@ exports.findOne = (req, res) => {
   Book.findById(id)
     .then(data => {
       if (!data) {
-        return res.status(404).send({ message: "Not found book with id " + id });
+        return res.status(200).send({ message: "Not found book with id " + id, status: 404 });
       }
       else {
         res.status(200).send(data);
@@ -70,30 +71,30 @@ exports.findOne = (req, res) => {
     .catch(err => {
       return res
         .status(500)
-        .send({ message: "Error retrieving book with id=" + id });
+        .send({ message: err+"| Error retrieving book with id=" + id, status: 500 });
     });
 };
 
 exports.update = (req, res) => {
   if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty!"
+    return res.status(200).send({
+      message: "Data to update can not be empty!", status: 400
     });
   }
   const id = req.params.id;
   Book.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
-        return res.status(404).send({
-          message: "Cannot update Book with id=${id}."
+        return res.status(200).send({
+          message: "Cannot update Book with id=${id}.", status: 404
         });
       } else {
         res.status(200).send({ message: "Book was updated successfully." });
       }
     })
     .catch(err => {
-      return res.status(500).send({
-        message: "Error updating Book with id=" + id
+      return res.status(200).send({
+        message: err+"| Error updating Book with id=" + id, status: 500
       });
     });
 };
@@ -103,8 +104,8 @@ exports.delete = (req, res) => {
   Book.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
-        return res.status(404).send({
-          message: "Cannot delete Book with id=${id}."
+        return res.status(200).send({
+          message: "Cannot delete Book with id=${id}.", status: 404
         });
       } else {
         res.status(200).send({
@@ -113,8 +114,8 @@ exports.delete = (req, res) => {
       }
     })
     .catch(err => {
-      return res.status(500).send({
-        message: "Could not delete Book with id=" + id
+      return res.status(200).send({
+        message: err+" | Could not delete Book with id=" + id, status: 500
       });
     });  
 };

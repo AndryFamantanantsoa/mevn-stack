@@ -22,17 +22,18 @@
             Alert
         },
         methods: {
-            loginFunc (data) {
+            async loginFunc (data) {
                 this.$auth.loginWith ('local', {
                     data: data
                 }).then((resp)=>{
-                    if (resp.status == 200 ){
-                        this.$auth.setUser(data);
-                    }
                     if (resp.data.status == 400 || resp.data.status == 401 ){
                         this.variant = "danger";
                         this.alerttext = resp.data.error;
                         this.showDismissibleAlert = true;
+                    }
+                    else if (resp.status == 200 ){
+                        this.$auth.setUser(data);
+                        this.$router.push('/list-book');
                     }
                 });
             }

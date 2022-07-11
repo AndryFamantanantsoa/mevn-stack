@@ -1,5 +1,19 @@
 [
   {
+    "name": "book-view",
+    "path": "/book-view",
+    "component": "/home/andry/Documents/troov-MVEN/ui/pages/book-view.vue",
+    "chunkName": "pages/book-view",
+    "_name": "_19fcd638"
+  },
+  {
+    "name": "list-book",
+    "path": "/list-book",
+    "component": "/home/andry/Documents/troov-MVEN/ui/pages/list-book.vue",
+    "chunkName": "pages/list-book",
+    "_name": "_3052f913"
+  },
+  {
     "name": "signin",
     "path": "/signin",
     "component": "/home/andry/Documents/troov-MVEN/ui/pages/signin.vue",

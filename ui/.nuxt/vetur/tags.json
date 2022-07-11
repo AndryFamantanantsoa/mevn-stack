@@ -2,6 +2,12 @@
   "AlertsAlert": {
     "description": "Auto imported from components/alerts/alert.vue"
   },
+  "BooksViewer": {
+    "description": "Auto imported from components/books/BooksViewer.vue"
+  },
+  "BooksListsViewer": {
+    "description": "Auto imported from components/books/ListsViewer.vue"
+  },
   "Footer": {
     "description": "Auto imported from components/footer/Footer.vue"
   },
@@ -10,5 +16,8 @@
   },
   "NavNavbar": {
     "description": "Auto imported from components/nav/Navbar.vue"
+  },
+  "TableList": {
+    "description": "Auto imported from components/table/Table-list.vue"
   }
 }
