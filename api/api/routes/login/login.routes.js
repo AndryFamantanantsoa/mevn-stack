@@ -3,6 +3,6 @@ const router = require("express").Router();
 // signup
 router.post("/signup", logins.signup);
 // signin
-router.post("/signin", logins.signin);
+router.post("/", logins.signin);
 
 module.exports = router;

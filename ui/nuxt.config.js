@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'ui',
+    title: 'Troov-MVEN simple api and ui',
     htmlAttrs: {
       lang: 'en'
     },
@@ -38,9 +38,44 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      sass: {
+        implementation: require('sass'),
+      },
+      scss: {
+        implementation: require('sass'),
+      },
+    },
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        endpoints: {
+          login: { url: 'api/login', method: 'post' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+        }
+      }
+    }
+  },
+
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': 'http://localhost:8080/'
   }
 }

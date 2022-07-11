@@ -4,13 +4,12 @@ const User = db.user;
 
 exports.signup = async (req, res) => {
   // Validate request
-  if (!req.body.login || !req.body.password) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
+  if (!req.body.email || !req.body.password) {
+    res.status(200).send({ message: "Content can not be empty!", status: 400 });
   }
   const userExist = await User.findOne({ email: req.body.email });
   if (userExist) {
-    res.status(401).json({ error: "user already existing." });
+    res.status(200).json({ error: "user already existing.", status: 401 });
   }
 
   const user = new User(req.body);
@@ -19,9 +18,10 @@ exports.signup = async (req, res) => {
   user.save()
   .then((data) => res.status(201).send(data))
   .catch(error => {
-    res.status(500).send({
+    return res.status(200).send({
       message:
         error.message || "Some error occurred while creating the User."
+        , status: 500
     });
   });
 };
@@ -32,11 +32,11 @@ exports.signin = async (req, res) => {
     // check user password with hashed password stored in the database
     const checkValid = await bcrypt.compare(req.body.password, user.password);
     if (checkValid) {
-      res.status(200).json({ message: "Valid password" });
+      res.status(200).send((user));
     } else {
-      res.status(400).json({ error: "Invalid Password" });
+      res.status(200).json({ error: "Invalid Password", status: 400 });
     }
   } else {
-    res.status(401).json({ error: "User not exist" });
+    res.status(200).json({ error: "User not exist", status: 401 });
   }
 }

@@ -1,0 +1,14 @@
+{
+  "AlertsAlert": {
+    "description": "Auto imported from components/alerts/alert.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/footer/Footer.vue"
+  },
+  "LoginAuthForm": {
+    "description": "Auto imported from components/login/AuthForm.vue"
+  },
+  "NavNavbar": {
+    "description": "Auto imported from components/nav/Navbar.vue"
+  }
+}

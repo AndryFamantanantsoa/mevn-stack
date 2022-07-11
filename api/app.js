@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const db = require("./api/models");
 const loginRoute = require ("./api/routes/login/login.routes");
 const booksRoute = require ("./api/routes/books/books.routes");
+const usersRoute = require ("./api/routes/users/users.routes");
 const app = express();
 
 // connection to database mongoose
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/login", loginRoute);
 app.use("/api/books", booksRoute);
+app.use("/api/user", usersRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

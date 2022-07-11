@@ -20,7 +20,7 @@ exports.new = (req, res) => {
         res.status(200).send(data);
     })
     .catch(err => {
-      res.status(500).send({
+      return res.status(500).send({
         message:
           err.message || "Some error occurred while creating the Book."
       });
@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
         res.status(200).send(data);
       })
       .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message:
             err.message || "Some error occurred while retrieving books."
         });
@@ -61,14 +61,14 @@ exports.findOne = (req, res) => {
   Book.findById(id)
     .then(data => {
       if (!data) {
-        res.status(404).send({ message: "Not found book with id " + id });
+        return res.status(404).send({ message: "Not found book with id " + id });
       }
       else {
         res.status(200).send(data);
       }
     })
     .catch(err => {
-      res
+      return res
         .status(500)
         .send({ message: "Error retrieving book with id=" + id });
     });
@@ -84,7 +84,7 @@ exports.update = (req, res) => {
   Book.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
-        res.status(404).send({
+        return res.status(404).send({
           message: "Cannot update Book with id=${id}."
         });
       } else {
@@ -92,7 +92,7 @@ exports.update = (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).send({
+      return res.status(500).send({
         message: "Error updating Book with id=" + id
       });
     });
@@ -103,7 +103,7 @@ exports.delete = (req, res) => {
   Book.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
-        res.status(404).send({
+        return res.status(404).send({
           message: "Cannot delete Book with id=${id}."
         });
       } else {
@@ -113,7 +113,7 @@ exports.delete = (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).send({
+      return res.status(500).send({
         message: "Could not delete Book with id=" + id
       });
     });  

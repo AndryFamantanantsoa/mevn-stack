@@ -7,15 +7,15 @@ exports.findOne = (req, res) => {
   User.findById(id)
     .then(data => {
       if (!data){
-        res.status(404).send({ message: "Not found user with id " + id });
+        res.status(200).send({ message: "Not found user with id " + id, status: 404 });
       }
       else{
         res.status(200).send(data);
       } 
     })
     .catch(error => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving User with id=" + id });
+      return res
+        .status(200)
+        .send({ message: "Error retrieving User with id=" + id, status: 500 });
     });
 };

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "signin",
+    "path": "/signin",
+    "component": "/home/andry/Documents/troov-MVEN/ui/pages/signin.vue",
+    "chunkName": "pages/signin",
+    "_name": "_69d3cc57"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "/home/andry/Documents/troov-MVEN/ui/pages/signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_7e6a22cd"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/andry/Documents/troov-MVEN/ui/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_da6700a6"
+  }
+]
