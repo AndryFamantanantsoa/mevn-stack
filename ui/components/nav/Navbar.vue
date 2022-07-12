@@ -1,11 +1,9 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand to="/">Troov-MVEN</b-navbar-brand>
+      <b-navbar-brand to="/home">Troov-MVEN</b-navbar-brand>
       <b-navbar-brand v-if="isAuthentified" to="/list-book">Books</b-navbar-brand>
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <div v-if="isAuthentified">
@@ -25,26 +23,26 @@
 </template>
 
 <script>
-    export default {
-      name: "navbar",
-      data() {
-        return {
-          isAuthentified: this.$auth.loggedIn
-        }
+  export default {
+    name: "navbar",
+    data() {
+      return {
+        isAuthentified: this.$auth.loggedIn
+      }
+    },
+    methods: {
+      updateLogInfo () {
+        this.isAuthentified = this.$auth.loggedIn
       },
-      methods: {
-        updateLogInfo () {
-          this.isAuthentified = this.$auth.loggedIn
-        },
-        async logoutUser (){
-          await this.$auth.logout();
-          this.$router.push('/signin');
-        }
-      },
-      watch: {
-        $route() {
-          this.updateLogInfo();
-        }
+      async logoutUser (){
+        await this.$auth.logout();
+        this.$router.push('/signin');
+      }
+    },
+    watch: {
+      $route() {
+        this.updateLogInfo();
       }
     }
+  }
 </script>

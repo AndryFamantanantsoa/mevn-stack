@@ -28,7 +28,7 @@
                     this.variant = "success";
                     this.alerttext = "User successfully add";
                     this.showDismissibleAlert = true;
-                     this.$router.push('/signin');
+                    this.$router.push('/signin');
                 }
                 else if (resp.data.status == 400 || resp.data.status == 401 ){
                     this.variant = "danger";

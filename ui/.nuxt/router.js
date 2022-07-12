@@ -5,6 +5,7 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _19fcd638 = () => interopDefault(import('../pages/book-view.vue' /* webpackChunkName: "pages/book-view" */))
+const _0c7ae358 = () => interopDefault(import('../pages/home.vue' /* webpackChunkName: "pages/home" */))
 const _3052f913 = () => interopDefault(import('../pages/list-book.vue' /* webpackChunkName: "pages/list-book" */))
 const _69d3cc57 = () => interopDefault(import('../pages/signin.vue' /* webpackChunkName: "pages/signin" */))
 const _7e6a22cd = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
@@ -25,6 +26,10 @@ export const routerOptions = {
     path: "/book-view",
     component: _19fcd638,
     name: "book-view"
+  }, {
+    path: "/home",
+    component: _0c7ae358,
+    name: "home"
   }, {
     path: "/list-book",
     component: _3052f913,

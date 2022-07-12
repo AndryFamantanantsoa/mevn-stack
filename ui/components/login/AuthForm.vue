@@ -23,7 +23,6 @@
   export default {
     data() {
       return {
-        hasName: false,
         userInfo: {
           email: '',
           password: ''

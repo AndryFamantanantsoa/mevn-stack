@@ -7,6 +7,13 @@
     "_name": "_19fcd638"
   },
   {
+    "name": "home",
+    "path": "/home",
+    "component": "/home/andry/Documents/troov-MVEN/ui/pages/home.vue",
+    "chunkName": "pages/home",
+    "_name": "_0c7ae358"
+  },
+  {
     "name": "list-book",
     "path": "/list-book",
     "component": "/home/andry/Documents/troov-MVEN/ui/pages/list-book.vue",
