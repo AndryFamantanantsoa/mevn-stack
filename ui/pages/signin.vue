@@ -9,7 +9,7 @@
     import AuthForm from '@/components/login/AuthForm.vue'
     import Alert from '@/components/alerts/alert.vue'
     export default {
-        name: "SigninPage",
+        name: "signin",
         data() {
             return {
                 variant: "danger",
@@ -32,7 +32,6 @@
                         this.showDismissibleAlert = true;
                     }
                     else if (resp.status == 200 ){
-                        this.$auth.setUser(data);
                         this.$router.push('/list-book');
                     }
                 });

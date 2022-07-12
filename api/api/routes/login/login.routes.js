@@ -4,5 +4,6 @@ const router = require("express").Router();
 router.post("/signup", logins.signup);
 // signin
 router.post("/", logins.signin);
+router.get("/user", logins.getUser);
 
 module.exports = router;

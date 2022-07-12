@@ -25,8 +25,8 @@
       return {
         hasName: false,
         userInfo: {
-          email: 'andry@dfv.com',
-          password: 'fvvxcbfdbd'
+          email: '',
+          password: ''
         },
       }
     },

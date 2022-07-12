@@ -9,7 +9,7 @@
     import AuthForm from '@/components/login/AuthForm.vue'
     import Alert from '@/components/alerts/alert.vue'
     export default {
-        name: "SigninPage",
+        name: "signup",
         data() {
             return {
                 variant: "danger",
@@ -28,6 +28,7 @@
                     this.variant = "success";
                     this.alerttext = "User successfully add";
                     this.showDismissibleAlert = true;
+                     this.$router.push('/signin');
                 }
                 else if (resp.data.status == 400 || resp.data.status == 401 ){
                     this.variant = "danger";

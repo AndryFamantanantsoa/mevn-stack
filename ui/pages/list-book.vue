@@ -11,6 +11,7 @@
     import ListsViewer from '@/components/books/ListsViewer'
     import Alert from '@/components/alerts/alert.vue'
     export default {
+        name: 'list-book',
         components: {
             ListsViewer,
             Alert

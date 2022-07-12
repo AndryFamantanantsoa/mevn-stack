@@ -1,5 +1,6 @@
 const db = require("../../models");
 const bcrypt = require ("bcrypt");
+const jwt = require("jsonwebtoken");
 const User = db.user;
 
 exports.signup = async (req, res) => {
@@ -26,13 +27,17 @@ exports.signup = async (req, res) => {
   });
 };
 
+let loadedUser;
 exports.signin = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user) {
-    // check user password with hashed password stored in the database
     const checkValid = await bcrypt.compare(req.body.password, user.password);
     if (checkValid) {
-      res.status(200).send((user));
+      const token = jwt.sign({ email: user.email }, "expressnuxtsecret", {
+        expiresIn: "20m",
+      });
+      loadedUser = user;
+      res.status(200).json({token});
     } else {
       return res.status(200).json({ message: "Invalid Password", status: 400 });
     }
@@ -40,3 +45,13 @@ exports.signin = async (req, res) => {
     return res.status(200).json({ message: "User not exist", status: 401 });
   }
 }
+
+exports.getUser = (req, res) => { 
+  res.status(200).json({
+    user: {
+      id: loadedUser._id,
+      name: loadedUser.name,
+      email: loadedUser.email,
+    },
+  });
+};

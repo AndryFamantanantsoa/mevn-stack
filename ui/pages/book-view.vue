@@ -10,6 +10,7 @@
     import BooksViewer from '@/components/books/BooksViewer'
     import Alert from '@/components/alerts/alert.vue'
     export default {
+        name: 'book-view',
         components: {
             BooksViewer,
             Alert
